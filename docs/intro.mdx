@@ -1,0 +1,35 @@
+---
+title: LongTAMP
+slug: /
+hide_table_of_contents: true
+---
+
+<div className="hero-kicker">Open-source manipulation planning</div>
+
+# Plan the whole mission. Move one phase at a time.
+
+<p className="hero-lede">LongTAMP is a Python library for long-horizon, multi-arm task and motion planning. It turns declarative manipulation goals into collision-aware HPP paths and restartable BehaviorTree.CPP missions.</p>
+
+<div className="hero-actions"><a href="getting-started/installation">Install LongTAMP</a><a href="concepts/planning-pipeline">See the planning pipeline</a></div>
+
+<div className="feature-grid">
+  <div className="feature-card"><span>01 / SCALE</span><h3>Linear sequence planning</h3><p>Build a minimal constraint graph for each grasp, place, or handover phase. Planning grows with the sequence instead of enumerating every grasp combination.</p></div>
+  <div className="feature-card"><span>02 / COORDINATE</span><h3>Multi-arm, multi-object scenes</h3><p>Compose several robots and free-flying objects in one mutually collision-aware model, with legal grasps supplied as data.</p></div>
+  <div className="feature-card"><span>03 / RECOVER</span><h3>Replay and resume</h3><p>Crash-safe JSONL logs, path capture, checkpoints, and continuity checks keep long missions observable and restartable.</p></div>
+  <div className="feature-card"><span>04 / EXECUTE</span><h3>Task plan to behavior tree</h3><p>Validate a versioned task-plan IR against known capabilities, then compile it deterministically to BehaviorTree.CPP.</p></div>
+</div>
+
+## From intent to motion
+
+<div className="pipeline"><div>YAML scene</div><div>Task plan</div><div>Phase graph</div><div>HPP solve</div><div>Replay / execute</div></div>
+
+LongTAMP separates mission logic from geometry-heavy motion planning. Task code describes the operation; reusable builders load scenes, create constraints, generate feasible configurations, and solve each local transition. The result can stay in Python or run through the standalone C++ behavior-tree host—without ROS or a network hop.
+
+## Designed for real planning work
+
+- **Browser-native visualization** through viser, with gepetto-viewer available for Qt workflows.
+- **Backend isolation** keeps HPP bindings behind one interface.
+- **Structured evidence** records every phase, edge attempt, timing, target configuration, and saved path.
+- **Declarative configuration** makes adding robots, objects, and valid grasp pairs a data change.
+
+Start with the [installation guide](getting-started/installation), then build a [first task](getting-started/first-task).
