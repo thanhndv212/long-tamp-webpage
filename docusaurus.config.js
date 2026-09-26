@@ -10,7 +10,8 @@ const config = {
   url: 'https://thanhndv212.github.io',
   baseUrl: '/long-tamp-webpage/',
   organizationName: 'thanhndv212', projectName: 'long-tamp-webpage', deploymentBranch: 'gh-pages', trailingSlash: false,
-  onBrokenLinks: 'throw', markdown: {hooks: {onBrokenMarkdownLinks: 'warn'}}, i18n: {defaultLocale: 'en', locales: ['en']},
+  onBrokenLinks: 'throw', markdown: {mermaid: true, hooks: {onBrokenMarkdownLinks: 'warn'}}, i18n: {defaultLocale: 'en', locales: ['en']},
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [['classic', {docs: {routeBasePath: '/', sidebarPath: './sidebars.js', editUrl: 'https://github.com/thanhndv212/long-tamp-webpage/tree/main/'}, blog: false, theme: {customCss: './src/css/custom.css'}}]],
   themeConfig: {
     image: 'img/social-card.svg', colorMode: {respectPrefersColorScheme: true},
@@ -18,6 +19,7 @@ const config = {
       {type: 'docSidebar', sidebarId: 'docsSidebar', position: 'left', label: 'Docs'},
       {to: '/concepts/planning-pipeline', label: 'How it works', position: 'left'},
       {to: '/examples', label: 'Examples', position: 'left'},
+      {to: '/benchmarks', label: 'Benchmarks', position: 'left'},
       {href: 'https://github.com/thanhndv212/long-tamp', label: 'GitHub', position: 'right'},
       {href: 'https://thanhndv212.github.io/', label: 'About me', position: 'right'},
       {
