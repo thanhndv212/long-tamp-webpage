@@ -18,6 +18,25 @@ Two UR10 arms with Robotiq 2F-85 grippers fasten four plates to a jig. The left 
 
 The scene was loaded again on 27 September 2026 with `--check`: 59 configuration DOF, four parts, and a valid initial configuration. The new lead image is a fresh viser capture of the stored seed-10 trajectory’s terminal configuration.
 
+## Full mission replay
+
+<video controls preload="metadata" poster="/long-tamp-webpage/img/examples/screw-assembly/keyframes/01-initial-cell.jpg" style={{width: '100%', borderRadius: '12px'}}>
+  <source src="/long-tamp-webpage/video/screw-assembly-full-demo.mp4" type="video/mp4" />
+</video>
+
+*Complete four-part replay captured from the live viser demo on port 8081. The original trajectory lasts approximately 151 seconds; this 21-second version preserves the full sequence as an accelerated overview.*
+
+## Task walkthrough
+
+<div className="figure-grid">
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/01-initial-cell.jpg"/><figcaption><strong>1 — Initialize.</strong> Four plates wait in the staging rack. The driver is upright in its charging dock, and both arms begin outside the shared central workspace.</figcaption></figure>
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/02-driver-and-part-pickup.jpg"/><figcaption><strong>2 — Acquire resources.</strong> The right UR10 takes the cordless driver while the left UR10 approaches the next plate. These independent grasps establish the objects each arm carries.</figcaption></figure>
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/03-first-screw-contact.jpg"/><figcaption><strong>3 — Clamp and fasten.</strong> The left arm holds the plate at the jig while the driver tip reaches a hole. The active screw contact is modeled as another gripper-handle constraint.</figcaption></figure>
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/04-next-part-pickup.jpg"/><figcaption><strong>4 — Advance the horizon.</strong> After releasing a fixed plate, the left arm returns to the staging rack. Completed parts remain attached to fixture clamps and become part of the growing collision scene.</figcaption></figure>
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/05-coordinated-clamp-and-screw.jpg"/><figcaption><strong>5 — Coordinate both arms.</strong> One arm maintains the committed clamp pose while the other drives the two holes. Lookahead rejects clamp samples that block either future tool target.</figcaption></figure>
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/keyframes/06-completed-assembly.jpg"/><figcaption><strong>6 — Finish and retreat.</strong> All four plates are retained by the fixture. The arms clear the shared workspace before the driver is returned to its dock.</figcaption></figure>
+</div>
+
 ## Scene semantics
 
 | Entity | Model | Planning frames |
@@ -103,6 +122,6 @@ All failure episodes recovered through phase resume; none reached the replan-fro
 
 <div className="evidence-note"><strong>What this proves.</strong> The configured planning problem completed for ten deterministic random seeds and produced replayable paths. It does not demonstrate physical fastening, torque control, visual pose estimation, or hardware execution.</div>
 
-## Video status
+## Media provenance
 
-The replay path is implemented and reproducible, but the repository does not yet include a checked-in public video. Recordings should be generated from a named run directory and published with its seed, commit, `mission.json`, and trajectory so the clip remains tied to inspectable evidence.
+The video and key frames above were captured on 27 September 2026 from the running browser-based viser replay at `localhost:8081`. They visualize a stored planned trajectory; they are not footage of physical execution.
