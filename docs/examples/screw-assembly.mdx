@@ -9,11 +9,14 @@ Two UR10 arms with Robotiq 2F-85 grippers fasten four plates to a jig. The left 
 <div className="metric-row"><div className="metric"><strong>19</strong><span>mission blocks</span></div><div className="metric"><strong>31</strong><span>grasp/release phases</span></div><div className="metric"><strong>10 / 10</strong><span>seeded runs completed</span></div><div className="metric"><strong>687 s</strong><span>median planning time</span></div></div>
 
 <div className="figure-grid">
+  <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/final-replay-2026-09-27.png"/><figcaption>Fresh capture from the seed-10 recorded trajectory, replayed on 27 September 2026 at the final assembled state.</figcaption></figure>
   <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/scene_start.png"/><figcaption>Initial cell: two opposed UR10s, staged plates, jig, and docked driver.</figcaption></figure>
   <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/scene_grasped.png"/><figcaption>The planning model after grasping: held objects become rigidly constrained to gripper frames.</figcaption></figure>
   <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/4p_2.png"/><figcaption>Four-part assembly during the repeated clamp-and-screw cycle.</figcaption></figure>
   <figure><img src="/long-tamp-webpage/img/examples/screw-assembly/4p_3_final.png"/><figcaption>Final planned configuration with all four plates retained by fixture clamps.</figcaption></figure>
 </div>
+
+The scene was loaded again on 27 September 2026 with `--check`: 59 configuration DOF, four parts, and a valid initial configuration. The new lead image is a fresh viser capture of the stored seed-10 trajectory’s terminal configuration.
 
 ## Scene semantics
 

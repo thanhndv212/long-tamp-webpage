@@ -42,4 +42,21 @@ The [integration reference](https://github.com/thanhndv212/long-tamp/blob/main/d
 
 ## Evidence
 
-The repository contains unit tests for IR validation, deterministic compilation, capabilities, and task-planning sessions, plus the C++ host example. It does not yet publish an end-to-end timing benchmark comparing embedded execution with an external middleware bridge.
+The host was run again on 27 September 2026. It compiled the sample move-home transaction, executed it, and returned `SUCCESS` with the completed operation `move-home` and plan fingerprint `5d6b6ff46b1429c5438ede43eda4013a056841695de8143e3d7d75f88e5d57dd`.
+
+```text
+task-plan-root
+   setup-task-plan
+   Move home transaction
+      Move home complete
+      Move home ready
+         Move home precondition
+         Move home retry
+            Move home
+   finalize-task-plan
+
+Task plan status: SUCCESS
+Session report: {"completed":["move-home"],"status":"success"}
+```
+
+The repository also contains unit tests for IR validation, deterministic compilation, capabilities, and task-planning sessions. It does not yet publish an end-to-end timing benchmark comparing embedded execution with an external middleware bridge.

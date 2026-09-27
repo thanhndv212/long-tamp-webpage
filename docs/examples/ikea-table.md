@@ -6,6 +6,10 @@ title: IKEA table prototype
 
 The IKEA LACK prototype uses two UR10 + Robotiq arms to pick four table legs and dock their pegs into sockets on a tabletop. It exercises an asset-heavy assembly scene rather than primitive-only collision geometry.
 
+![Fresh IKEA table scene capture with two UR10 arms, tabletop, and four legs](/img/examples/ikea-table/initial-scene-2026-09-27.png)
+
+*Fresh viser capture after the generated URDF/SRDF scene passed its FK placement check, 27 September 2026.*
+
 ## Asset pipeline
 
 The table and leg meshes come from the MIT-licensed `clvrai/furniture` dataset. The repository retains the reference MJCF and derives HPP-compatible URDF/SRDF assets through `build_assets.py`.
@@ -27,9 +31,9 @@ For each leg, one arm grasps the leg handle, moves the peg to its tabletop socke
 
 ## Current implementation status
 
-Phase 1’s pregrasp target for `ur10_right/gripper > leg1/handle` converges reliably. The remaining eleven phases—docking and releasing leg 1, then repeating for legs 2–4—are still under development.
+The current scene loads successfully with 59 configuration DOF. FK checks place the tabletop and all four legs at their YAML targets. In the 27 September 2026 planning run, the phase-0 lookahead repeatedly failed to generate the future `leg1/peg > table/socket1_hole` target. Each five-second attempt ended in solver failure with no collision-invalid candidates; the smallest observed residual was approximately 0.0533. The run was stopped after repeated timeouts.
 
-<div className="evidence-note"><strong>Status boundary.</strong> This is a prototype article. There is no complete mission result, benchmark, or video to report yet. The value today is the asset pipeline, scene semantics, frame-debugging workflow, and a reproducible first pregrasp.</div>
+<div className="evidence-note"><strong>Status boundary.</strong> This is a prototype article. The scene and asset pipeline run, but the latest mission attempt did not pass the first peg/socket lookahead. There is no complete mission result, benchmark, or video to report yet.</div>
 
 ## Run the development tools
 
