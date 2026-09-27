@@ -21,7 +21,15 @@ hide_table_of_contents: true
 
 ## From intent to motion
 
-<div className="pipeline"><div>YAML scene</div><div>Task plan</div><div>Phase graph</div><div>HPP solve</div><div>Replay / execute</div></div>
+```mermaid
+flowchart LR
+  Scene["YAML scene"] --> Plan["Task plan"]
+  Plan --> Graph["Phase-local<br/>constraint graph"]
+  Graph --> Solve["HPP solve"]
+  Solve --> Result["Replay / execute"]
+  Solve -. "failure evidence" .-> Recover["Bounded recovery"]
+  Recover -. "retry" .-> Graph
+```
 
 LongTAMP separates mission logic from geometry-heavy motion planning. Task code describes the operation; reusable builders load scenes, create constraints, generate feasible configurations, and solve each local transition. The result can stay in Python or run through the standalone C++ behavior-tree host—without ROS or a network hop.
 
